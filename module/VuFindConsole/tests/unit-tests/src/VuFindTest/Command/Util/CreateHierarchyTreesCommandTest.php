@@ -1,0 +1,187 @@
+<?php
+
+/**
+ * CreateHierarchyTreesCommand test.
+ *
+ * PHP version 8
+ *
+ * Copyright (C) Villanova University 2020.
+ *
+ * This program is free software; you can redistribute it and/or modify
+ * it under the terms of the GNU General Public License version 2,
+ * as published by the Free Software Foundation.
+ *
+ * This program is distributed in the hope that it will be useful,
+ * but WITHOUT ANY WARRANTY; without even the implied warranty of
+ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+ * GNU General Public License for more details.
+ *
+ * You should have received a copy of the GNU General Public License
+ * along with this program; if not, see
+ * <https://www.gnu.org/licenses/>.
+ *
+ * @category VuFind
+ * @package  Tests
+ * @author   Demian Katz <demian.katz@villanova.edu>
+ * @license  http://opensource.org/licenses/gpl-2.0.php GNU General Public License
+ * @link     https://vufind.org/wiki/development:testing:unit_tests Wiki
+ */
+
+namespace VuFindTest\Command\Util;
+
+use Symfony\Component\Console\Tester\CommandTester;
+use VuFind\Hierarchy\Driver\ConfigurationBased as HierarchyDriver;
+use VuFind\Hierarchy\TreeDataSource\Solr as TreeSource;
+use VuFind\Record\Loader;
+use VuFind\Search\Results\PluginManager;
+use VuFind\Search\Solr\Results;
+use VuFindConsole\Command\Util\CreateHierarchyTreesCommand;
+
+/**
+ * CreateHierarchyTreesCommand test.
+ *
+ * @category VuFind
+ * @package  Tests
+ * @author   Demian Katz <demian.katz@villanova.edu>
+ * @license  http://opensource.org/licenses/gpl-2.0.php GNU General Public License
+ * @link     https://vufind.org/wiki/development:testing:unit_tests Wiki
+ */
+class CreateHierarchyTreesCommandTest extends \PHPUnit\Framework\TestCase
+{
+    /**
+     * Get mock hierarchy driver.
+     *
+     * @return HierarchyDriver
+     */
+    protected function getMockHierarchyDriver()
+    {
+        return $this->createMock(HierarchyDriver::class);
+    }
+
+    /**
+     * Get mock tree source.
+     *
+     * @return TreeSource
+     */
+    protected function getMockTreeSource()
+    {
+        return $this->createMock(TreeSource::class);
+    }
+
+    /**
+     * Get mock record.
+     *
+     * @param HierarchyDriver $driver Hierarchy driver
+     *
+     * @return \VuFind\RecordDriver\AbstractBase
+     */
+    protected function getMockRecord($driver = null)
+    {
+        $record = new \VuFindTest\RecordDriver\TestHarness();
+        $record->setRawData(
+            [
+                'HierarchyType' => 'foo',
+                'HierarchyDriver' => $driver ?? $this->getMockHierarchyDriver(),
+            ]
+        );
+        return $record;
+    }
+
+    /**
+     * Get mock record loader.
+     *
+     * @param \VuFind\RecordDriver\AbstractBase $record Record driver
+     *
+     * @return Loader
+     */
+    protected function getMockRecordLoader($record = null)
+    {
+        $loader = $this->createMock(Loader::class);
+        $loader->expects($this->once())->method('load')
+            ->with('recordid', 'foo')
+            ->willReturn($record ?? $this->getMockRecord());
+        return $loader;
+    }
+
+    /**
+     * Get mock results.
+     *
+     * @return Results
+     */
+    protected function getMockResults()
+    {
+        $results = $this->createMock(Results::class);
+        $output = [
+            'hierarchy_top_id' => [
+                'data' => [
+                    'list' => [
+                        [
+                            'value' => 'recordid',
+                            'count' => 5,
+                        ],
+                    ],
+                ],
+            ],
+        ];
+        $results->expects($this->once())->method('getFullFieldFacets')
+            ->with(['hierarchy_top_id'])
+            ->willReturn($output);
+        return $results;
+    }
+
+    /**
+     * Get mock results manager.
+     *
+     * @param ?Results $results Results object
+     *
+     * @return PluginManager
+     */
+    protected function getMockResultsManager($results = null)
+    {
+        $manager = $this->createMock(PluginManager::class);
+        $manager->expects($this->once())->method('get')
+            ->with('foo')
+            ->willReturn($results ?? $this->getMockResults());
+        return $manager;
+    }
+
+    /**
+     * Get command to test.
+     *
+     * @param ?Loader        $loader  Record loader
+     * @param ?PluginManager $results Search results plugin manager
+     *
+     * @return SuppressedCommand
+     */
+    protected function getCommand(
+        ?Loader $loader = null,
+        ?PluginManager $results = null
+    ) {
+        return new CreateHierarchyTreesCommand(
+            $loader ?? $this->getMockRecordLoader(),
+            $results ?? $this->getMockResultsManager()
+        );
+    }
+
+    /**
+     * Test populating everything.
+     *
+     * @return void
+     */
+    public function testPopulatingEverything()
+    {
+        $tree = $this->getMockTreeSource();
+        $tree->expects($this->once())->method('getJSON')
+            ->with('recordid', ['refresh' => true]);
+        $driver = $this->getMockHierarchyDriver();
+        $driver->method('getTreeSource')->willReturn($tree);
+        $loader = $this->getMockRecordLoader($this->getMockRecord($driver));
+        $command = $this->getCommand($loader);
+        $commandTester = new CommandTester($command);
+        $commandTester->execute(['backend' => 'foo']);
+        $this->assertSame(0, $commandTester->getStatusCode());
+        $expectedText = "\tBuilding tree for recordid... 5 records\n"
+            . "1 files\n";
+        $this->assertSame($expectedText, $commandTester->getDisplay());
+    }
+}

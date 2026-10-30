@@ -1,0 +1,170 @@
+
+<div class="footer footer-container">
+  <?php foreach ($this->menu ?? [] as $name => $group): ?>
+    <div class="footer-column">
+      <?php $this->slot($name)->start(); ?>
+        <ul <?=$attributes?>
+          <?php if (!empty($item['id'])): ?>
+              <?php
+              $id = $item['id'];
+
+              $class = match ($id) {
+                  'social-links' => 'social',
+                  default => 'solid',
+              };
+              ?>
+          <?php endif; ?>
+        class="list-inline text-start">
+          <?php foreach ($group['MenuItems'] as $item): ?>
+            <?php
+              $attributes = $this->htmlAttributes($item['attributes'] ?? []);
+              $attributes['href'] = isset($item['route'])
+                ? $this->url($item['route'], $item['routeParams'] ?? [])
+                : $item['url'];
+            ?>
+<li>
+  <a <?=$attributes?>>
+    <?php if (!empty($item['icon'])): ?>
+            <?php
+$iconType = $item['iconType'] ?? 'solid';
+
+$iconClass = match ($iconType) {
+    'brands' => 'fa-brands',
+    'regular' => 'fa-regular',
+    default => 'fa-solid',
+};
+?>
+
+        <i class="<?= $this->escapeHtmlAttr($iconClass) ?>
+                <?= $this->escapeHtmlAttr('fa-' . $item['icon']) ?>"
+        aria-hidden="true"></i>
+    <?php endif; ?>
+
+    <?php if (empty($item['iconOnly'])): ?>
+      <span><?=$this->transEsc($item['label'])?></span>
+    <?php else: ?>
+      <span class="visually-hidden"><?=$this->transEsc($item['label'])?></span>
+    <?php endif; ?>
+  </a>
+</li>          <?php endforeach; ?>
+        </ul>
+      <?=$this->slot($name)->end(); ?>
+    </div>
+  <?php endforeach; ?>
+</div>
+<div
+
+
+
+
+
+    <footer class="footer hidden-print">
+
+        <div class="container-fluid">
+
+            <div class="row">
+
+                <div class="col-sm-3">
+                    <ul class="list-unstyled text-start">
+                        <li class="footer-calendar">
+                            <a href="/calendar/">Calendar of Events</a>
+                        </li>
+                        <li class="footer-blog">
+                            <a href="/blog/">Blog</a>
+                        </li>
+                    </ul>
+                </div>
+
+                <div class="col-sm-3">
+                    <ul class="list-unstyled margin-bottom-0 text-start">
+                        <li>
+                            <a href="<cfoutput>#server.config.eref.form#</cfoutput>">Contact Us
+                            </a>
+                        </li>
+                        <li><a href="/about/careers/">Careers</a></li>
+                        <li><a href="/support/">Support the Library</a></li>
+                        <li><a href="/spacerental/">Host Your Event at the Library</a></li>
+                    </ul>
+                </div>
+
+                <div class="col-sm-3">
+                    <ul class="list-unstyled margin-bottom-0 text-start">
+                        <li><a href="/rss/rssmenu.cfm">RSS</a></li>
+                        <li><a href="/policies/terms-of-use/">Terms of Use</a></li>
+                        <li><a href="/policies/privacy/">Site Privacy</a></li>
+                        <li class="hidden-xs">
+                            <a href="https://freelibraryphilly.sharepoint.com">Employee Intranet</a>
+                        </li>
+                    </ul>
+                </div>
+
+                <div class="col-sm-3">
+
+                    <ul class="social text-start">
+                        <li>
+                            <a href="https://www.facebook.com/freelibrary" target="_blank" title="Facebook">
+                                <span class="fa fa-facebook-square" aria-hidden="true"></span>
+                                <span class="visually-hidden">Facebook</span>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="https://twitter.com/FreeLibrary" target="_blank" title="Twitter">
+                                <span class="fa fa-twitter-square" aria-hidden="true"></span>
+                                <span class="visually-hidden">Twitter</span>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="https://instagram.com/freelibrary/" target="_blank" title="Instagram">
+                                <span class="fa fa-instagram" aria-hidden="true"></span>
+                                <span class="visually-hidden">Instagram</span>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="https://www.youtube.com/user/freelibraryofphilly" target="_blank" title="YouTube">
+                                <span class="fa fa-youtube-play" aria-hidden="true"></span>
+                                <span class="visually-hidden">YouTube</span>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="/rss/rssmenu.cfm" target="_blank" title="RSS Feed">
+                                <span class="fa fa-rss-square" aria-hidden="true"></span>
+                                <span class="visually-hidden">RSS Feed</span>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="https://support.freelibrary.org/site/Survey?ACTION_REQUIRED=URI_ACTION_USER_REQUESTS&SURVEY_ID=1020" target="_blank" title="Newsletter">
+                                <span class="fa fa-envelope" aria-hidden="true"></span>
+                                <span class="visually-hidden">Newsletter</span>
+                            </a>
+                        </li>
+                    </ul>
+
+                    <div class="margin-left-05">
+                        <div id="google_translate_element"></div>
+                    </div>
+
+                </div>
+
+            </div>
+
+
+<div class="copyright">
+        &copy;&nbsp;<?= date('Y') ?> Free Library of Philadelphia                
+        <br class="visible-xs">
+        <span class="hidden-xs">|</span>
+        Phone: <a href="<?= $this->escapeHtml($this->themeConfig()->phone) ?>">1-833-TALK FLP (825-5357)</a>        
+        <span class="hidden-xs">|</span>
+        <span class="city-of-philly">
+            <a href="https://www.phila.gov/">
+                <img src="/city-of-philadelphia.png" width="110px" alt="Visit the City of Philadelphia Website">
+            </a>
+        </span>
+    </div>
+
+            <div class="visible-xs">
+                <a href="https://freelibraryphilly.sharepoint.com">Employee Intranet</a>
+            </div>
+
+        </div>
+
+    </footer>

@@ -1,0 +1,142 @@
+@font-face {
+  font-family: "Font Awesome 7 Brands";
+  font-style: normal;
+  font-weight: 400;
+  font-display: block;
+  src: url("/vufind/themes/freelibrary/css/vendor/font-awesome/webfonts/fa-brands-400.woff2") format("woff2");
+}
+
+.fa-brands {
+  font-family: "Font Awesome 7 Brands";
+  font-weight: 400;
+}
+
+.fa-youtube::before {
+  content: "\f167";
+}
+
+.fa-facebook::before {
+  content: "\f39e";
+}
+
+.fa-instagram::before {
+  content: "\f16d";
+}
+
+
+@font-face {
+  font-family: "Font Awesome 7 Free";
+  font-style: normal;
+  font-weight: 400;
+  font-display: block;
+  src: url("/vufind/themes/freelibrary/css/vendor/font-awesome/webfonts/fa-regular-400.woff2")
+    format("woff2");
+}
+
+.fa-regular {
+  font-family: "Font Awesome 7 Free";
+  font-weight: 400;
+  font-style: normal;
+}
+
+
+@font-face {
+  font-family: "Font Awesome 7 Free";
+  font-style: normal;
+  font-weight: 900;
+  font-display: block;
+  src: url("/vufind/themes/freelibrary/css/vendor/font-awesome/webfonts/fa-solid-900.woff2")
+    format("woff2");
+}
+
+.fa-solid {
+  font-family: "Font Awesome 7 Free";
+  font-weight: 900;
+  font-style: normal;
+}
+
+
+/* Footer */
+
+footer {
+  background: #0e7fa7;
+  padding: 1.875rem 0;
+  margin-top: 2rem;
+  color: #ffffff;
+  text-align: center;
+
+  a {
+      color: #ffffff;
+      text-decoration: none;
+
+      &:focus {
+      outline: none;
+      text-decoration: underline;
+    }
+  }
+
+
+  li {
+    margin-bottom: 0.3125rem;
+  }
+
+  &-calendar,
+  &-blog {
+
+    &::before {
+      position: relative;
+      padding-right: 0.3125rem;
+      left: 0;
+      top: -1px;
+      font-family: "FontAwesome";
+      font-size: 16px;
+    }
+
+    position: relative;
+    margin-bottom: 0.625rem !important;
+
+    a {
+      display: inline-block;
+      font-weight: 700;
+      padding: 0.3125rem 0;
+    }
+  }
+
+  &-calendar::before {
+    content: "\f073";
+  }
+
+  &-blog::before {
+    content: "\f086";
+  }
+}
+
+/* social */
+  .social {
+
+    margin: 0.9375rem 0 1.5625rem;
+
+    li {
+
+      padding: 0;
+      margin-bottom: 0;
+
+      a {
+        display: flex;
+        font-size: 1.5rem;
+        text-decoration: none;
+        padding: 0.125rem 0.25rem 0.1875rem;
+
+        &:focus {
+          outline: 1px dashed #fff;
+        }
+
+        span.fa-envelope {
+          position: relative;
+          top: -1px;
+        }
+      }
+    }
+  }
+
+
