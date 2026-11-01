@@ -82,7 +82,7 @@ select.goog-te-combo {
   appearance: none !important;
   -webkit-appearance: none;
   -moz-appearance: none;
-  background: url(/assets/images/.svg) no-repeat center;
+  background: url(#{$image-path}/translate-button.svg) no-repeat center;
   background-size: 100%;
   text-indent: -9999px;
   height: 55px;
@@ -244,7 +244,7 @@ select.goog-te-combo {
 .google-translate-section {
   display: flex;
   flex-direction: row;
-  justify-content: flex-end;
+  // justify-content: flex-end;
   align-content: center;
   background-color: #fefefe;
   padding-left: 0px;
@@ -315,7 +315,7 @@ select.goog-te-combo {
     appearance: none !important;
     -webkit-appearance: none;
     -moz-appearance: none;
-    background: url(/assets/images/global/translate-button.svg) no-repeat center;
+    background: url(#{$image-path}/translate-button.svg) no-repeat center;
     background-color: #eeeeee;
     background-size: 100%;
     /* text-indent: -9999px; */
