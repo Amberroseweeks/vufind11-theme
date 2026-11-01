@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "49904fbb48043772e6eab5995a92bca0",
+    "content-hash": "fa6de291c1d00fe59f99ae2c0cbfc305",
     "packages": [
         {
             "name": "ahand/mobileesp",
@@ -12048,16 +12048,16 @@
         },
         {
             "name": "yajra/laravel-pdo-via-oci8",
-            "version": "v3.7.3",
+            "version": "v3.8.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/yajra/pdo-via-oci8.git",
-                "reference": "a18f7195fb7cbe5924d501b5a1837da6c05b52eb"
+                "reference": "a64b6e650ae634e280841e5c9b85286254ce31ef"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/yajra/pdo-via-oci8/zipball/a18f7195fb7cbe5924d501b5a1837da6c05b52eb",
-                "reference": "a18f7195fb7cbe5924d501b5a1837da6c05b52eb",
+                "url": "https://api.github.com/repos/yajra/pdo-via-oci8/zipball/a64b6e650ae634e280841e5c9b85286254ce31ef",
+                "reference": "a64b6e650ae634e280841e5c9b85286254ce31ef",
                 "shasum": ""
             },
             "require": {
@@ -12092,7 +12092,7 @@
             "description": "PDO userspace driver proxying calls to PHP OCI8 driver",
             "support": {
                 "issues": "https://github.com/yajra/pdo-via-oci8/issues",
-                "source": "https://github.com/yajra/pdo-via-oci8/tree/v3.7.3"
+                "source": "https://github.com/yajra/pdo-via-oci8/tree/v3.8.0"
             },
             "funding": [
                 {
@@ -12108,7 +12108,7 @@
                     "type": "patreon"
                 }
             ],
-            "time": "2025-12-17T07:09:38+00:00"
+            "time": "2026-10-17T07:08:06+00:00"
         }
     ],
     "packages-dev": [
