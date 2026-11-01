@@ -1,6 +1,7 @@
 //********************
 // Buttons
 //********************
+@use "sass:color";
 
 .big-button {
 	@extend .btn;
@@ -259,8 +260,8 @@ a {
 		&:active,
 		&:focus,
 		&:hover {
-			color: darken($color-class, 10%) !important;
-		}
+        color: color.adjust($color-class, $lightness: -10%) !important;		
+}
 	}
 
 	&.text {
@@ -299,12 +300,14 @@ a {
   border: 0;
   border-radius: 20px;
   background: $primary-gray-100;
+  height: 44px;
 
   input {
     position: absolute;
     opacity: 0;
     pointer-events: none;
 	width: 50px;
+    margin-left: 10px;
 
     &:checked + label {
     color: $info-300;

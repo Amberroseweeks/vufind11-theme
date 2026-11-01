@@ -5,11 +5,18 @@ $primary-red-300: #cf102d;
 $primary: #0e7fa7;
 $navbar-dark-color: white;
 $grid-gutter-width: 20px;
-
 @import "bootstrap"; /* Include bootstrap theme's scss base */
 
 /* You can organize these styles in separate files and @import them */
+@import "components/advanced-search";
+@import "variables";
 @import "home-page";
+@import "partials/_header";
+@import "partials/_navs";
+@import "partials/_buttons";
+
+
+
 
 /* Change specific styles below */
 html {
