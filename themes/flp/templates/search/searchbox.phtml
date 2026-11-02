@@ -1,65 +1,3 @@
-  <div class="col-md-9 findbox-d d-none d-sm-block hidden-sm margin-x-0 padding-x-0">
-
-      <form id="QuickSearchMobile" name="QuickSearchMobile" class="d-flex margin-y-1 flex-wrap align-items-center" action="" method="post" onsubmit="return validateSearch('QuickSearchMobile');">
-          <div class="segmented-control segmented-control--two margin-right-105">
-              <fieldset class="" id="searchtype">
-                  <legend class="visually-hidden">Search our catalog or our website.</legend>
-                  <input type="radio" name="searchTech" id="searchme-catalog" value="catalog" checked>
-                  <label for="searchme-catalog">Catalog</label>
-                  <input type="radio" name="searchTech" id="searchme-website" value="website">
-                  <label for="searchme-website">Website</label>
-                  <span class="segment-indicator"></span>
-              </fieldset>
-          </div>
-          <div class="form-group d-flex justify-content-between search-field findformfield">
-              <div class="input-group">
-                  <!--- Begin Search Input --->
-                  <label for="searchForm_type" class="visually-hidden">Search Type</label>
-                  <div class="searchTypeFilter margin-left-1" id="searchboxHandlers">
-                      <select class="" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false" name="type" id="searchForm_type">
-                      <option value="AllFields">All Fields</option>
-                      <option value="Title">Title</option>
-                      <option value="Author">Author</option>
-                      <option value="Subject">Subject</option>
-                      <option value="ISN">ISBN/ISSN</option>
-                      <option value="CallNumber">Call Number</option>
-                      <option value="tag">Tag</option>
-                  </select>
-                  <!--- Border between search type and search input field --->
-                  <div class="vertical-border margin-x-05"></div>
-                  </div><!-- /btn-group -->
-
-
-
-                      <label for="keyword" class="visually-hidden">Keyword</label>
-                      <input type="text" id="keyword" name="keyword" maxlength="255" class="" placeholder="search the catalog..." onFocus="doClear(this)">
-                  <div class="pull-right">
-                      <button type="submit" id="submitSearch" name="submit" class="search-btn" value="simple">
-                          <span class="visually-hidden">Submit Search</span>
-                          <span class="fa fa-search"></span>
-                      </button>
-                  </div>
-              </div>
-          </div>
-
-          <input type="hidden" name="searchType" value="simple">
-          <input type="hidden" name="site" value="default_collection">
-          <input type="hidden" name="client" value="default_frontend">
-          <input type="hidden" name="proxystylesheet" value="default_frontend">
-          <input type="hidden" name="output" value="xml_no_dtd">
-
-          <div id="advanced-search">
-              <a class="text-info margin-x-1" href="Search/Advanced">Advanced Search</a>
-          </div>
-
-      </form>
-
-  </div>
-
-
-
-
-
 <?php
     // Initialize from current search (if available and not explicitly overridden) or defaults:
     if ($this->results === null) {
@@ -184,63 +122,18 @@
           }
         ?>
         <?php if ($handlerCount > 1): ?>
-  <!-- Begin FLP -->
-    <div class="col-md-9 findbox-d d-none d-sm-block hidden-sm margin-x-0 padding-x-0">
-        <!-- <form id="QuickSearchMobile" name="QuickSearchMobile" class="d-flex margin-y-1 flex-wrap align-items-center" action="" method="post" onsubmit="return validateSearch('QuickSearchMobile');"> -->
-          <div class="form-group d-flex justify-content-between search-field findformfield">
-                <div class="input-group">
-                  <!--- Begin Search Input --->
-                  <label for="searchForm_type" class="visually-hidden">Search Type</label>
-                  <div class="searchTypeFilter margin-left-1" id="searchboxHandlers">
-                        <!-- <select class="" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false" name="type" id="searchForm_type">
-                          <option value="AllFields">All Fields</option>
-                          <option value="Title">Title</option>
-                          <option value="Author">Author</option>
-                          <option value="Subject">Subject</option>
-                          <option value="ISN">ISBN/ISSN</option>
-                          <option value="CallNumber">Call Number</option>
-                          <option value="tag">Tag</option>
-                        </select> -->
-                    <select id="searchForm_type" class="searchForm_type form-select" name="type" data-native-menu="false" aria-label="<?=$this->transEscAttr('Search type')?>">
-                      <?php $currentGroup = $insideGroup = false; ?>
-                      <?php foreach ($handlers as $handler): ?>
-                        <?php
-                          if ($currentGroup !== ($handler['group'] ?? false)) {
-                            $currentGroup = $handler['group'];
-                            if ($insideGroup) {
-                              echo '</optgroup>';
-                            }
-                            if ($currentGroup) {
-                              echo '<optgroup label="' . $this->escapeHtmlAttr($currentGroup) . '">';
-                              $insideGroup = true;
-                            } else {
-                              $insideGroup = false;
-                            }
-                          }
-                        ?>
-                        <option value="<?=$this->escapeHtmlAttr($handler['value'])?>"<?=$handler['selected'] ? ' selected="selected"' : ''?>><?=$handler['indent'] ? '-- ' : ''?><?=$this->transEsc($handler['label'])?></option>
-                      <?php endforeach; ?>
-                      <?php if ($insideGroup): ?>
-                        </optgroup>
-                      <?php endif; ?>
-                    </select>
-                    <!--- Border between search type and search input field --->
-                      <div class="vertical-border margin-x-05"></div>
-                      </div><!-- /btn-group -->
-                          <label for="keyword" class="visually-hidden">Keyword</label>
-                          <input type="text" id="keyword" name="keyword" maxlength="255" class="" placeholder="search the catalog..." onFocus="doClear(this)">
-                      <div class="pull-right">
-                          <button type="submit" id="submitSearch" name="submit" class="search-btn" value="simple">
-                              <span class="visually-hidden">Submit Search</span>
-                              <span class="fa fa-search"></span>
-                          </button>
-                      </div>
-                  </div>
-                </div>
-        <!-- </form> -->
-      </div>
-  <!-- End FLP -->
-    <div class=" form-group d-flex justify-content-between search-field findformfieldcol-md-9 findbox-d d-none d-sm-block hidden-sm margin-x-0 padding-x-0">
+
+    <div class=" form-group d-flex search-field findformfield col-md-9 findbox-d margin-x-0 padding-x-0 align-items-center">
+          <div class="segmented-control segmented-control--two margin-right-105">
+            <fieldset class="" id="searchtype">
+                <legend class="visually-hidden">Search our catalog or our website.</legend>
+                <input type="radio" name="searchTech" id="searchme-catalog" value="catalog" checked>
+                <label for="searchme-catalog">Catalog</label>
+                <input type="radio" name="searchTech" id="searchme-website" value="website">
+                <label for="searchme-website">Website</label>
+                <span class="segment-indicator"></span>
+            </fieldset>
+          </div>
       <div class="input-group">
         <label for="searchForm_type" class="visually-hidden">Search Type</label>
         <div class="searchTypeFilter margin-left-1" id="searchboxHandlers">
@@ -268,6 +161,7 @@
             <?php endif; ?>
           </select>
         </div>
+          <div class="vertical-border margin-x-05"></div>
         <?php elseif ($handlerCount == 1): ?>
           <input type="hidden" name="type" value="<?=$this->escapeHtmlAttr($handlers[0]['value'])?>">
         <?php endif; ?>

@@ -47,7 +47,7 @@ a.navbar-toggle:hover {
     color: #ffffff !important;
     background-color: $brand-primary;
     margin-right: 0px;
-    border-radius: 50px;
+    border-radius: 50px !important;
     padding: 10px 15px;
     border: none;
 
@@ -62,9 +62,8 @@ a.navbar-toggle:hover {
 // Desktop
 
 .findbox-d {
-  // width: 100%;
   border-right: solid 1px #e6e6e6;
-  padding-top: 20px;
+  padding-top: 10px 0px;
 
   .input-group {
     border: solid 2px $primary-gray-100;
@@ -98,7 +97,7 @@ a.navbar-toggle:hover {
       background-color: #ffffff;
       color: $info-300;
       padding: 10px;
-      width: 75%;
+      width: 100%;
 
       &:active,
       &:focus,
@@ -175,8 +174,8 @@ a.navbar-toggle:hover {
     color: #ffffff !important;
     background-color: $brand-primary;
     margin-right: 0px;
-    border-radius: 50px;
-    padding: 10px 15px;
+    border-radius: 50px !important;
+    padding: 10px 12px;
     border: none;
   }
 

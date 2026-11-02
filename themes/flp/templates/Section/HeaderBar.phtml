@@ -75,10 +75,6 @@
   </div>
 </nav> -->
 
-
-
-
-
 <!-- begin FLP -->
 <div id="wrap">
 
@@ -88,6 +84,8 @@
        <!-- Mobile menu button -->
 
     <!--- Start First Nav Row --->
+
+
     <div class="banner pt-3 navbar navbar-expand-md container">
       <a class="navbar-brand lang-<?=$this->layout()->userLang ?>" href="<?=$this->url('home')?>"><img src="<?=$this->imageLink('flp-logo.png'); ?>" width="50px"alt="Free Library of Philadelphia" /></a>
       <div class="d-flex gap-2">
@@ -100,62 +98,62 @@
         <button type="button" class="navbar-toggle d-block d-md-none" data-bs-toggle="collapse" data-bs-target="#header-collapse-flp" aria-label="<?=$this->transEscAttr('mobile_toggle_navigation_text')?>">
           <span class="visually-hidden">Toggle Navigation</span> <span class="fa fa-bars fa-2x" aria-hidden="true"></span>
         </button> 
-                    </div>
-        <div id="header-collapse-flp" class="d-flex container collapse navbar-collapse  align-items-baseline justify-content-between">
+      </div>
+      <div id="header-collapse-flp" class="d-flex container collapse navbar-collapse  align-items-baseline justify-content-between">
 
-            <nav class="banner navbar">
-                <ul class="d-flex list-inline">
-                    <li class="nav-item">
-                      <a href="#">
-                          Locations
+          <nav class="banner navbar">
+              <ul class="d-flex list-inline">
+                  <li class="nav-item">
+                    <a href="#">
+                        Locations
+                    </a>
+                  </li>
+                  <li class="nav-item">
+                    <a href="#">                                  Events
                       </a>
-                    </li>
-                    <li class="nav-item">
-                      <a href="#">                                  Events
-                        </a>
-                    </li>
-                    <span class="vertical-border"></span>
-                    <li class="nav-item">
-                      <a href="#">                                  Programs and Services
-                        </a>
-                    </li>
-                    <li class="nav-item">
-                      <a href="#">                                  About
-                        </a>
-                    </li>
-                    <li class="nav-item">
-                      <a href="#">                                  Blog
-                        </a>
-                    </li>
-                    <li class="nav-item">
-                      <a href="#">                                  Support
-                        </a>
-                    </li>
-                </ul>
-            </nav>
+                  </li>
+                  <span class="vertical-border"></span>
+                  <li class="nav-item">
+                    <a href="#">                                  Programs and Services
+                      </a>
+                  </li>
+                  <li class="nav-item">
+                    <a href="#">                                  About
+                      </a>
+                  </li>
+                  <li class="nav-item">
+                    <a href="#">                                  Blog
+                      </a>
+                  </li>
+                  <li class="nav-item">
+                    <a href="#">                                  Support
+                      </a>
+                  </li>
+              </ul>
+          </nav>
 
-            <!--- Donate, Library card and login button --->
-            <div class="d-none d-sm-block justify-content-between">
-                <ul class="list-inline d-flex gap-3 flex-wrap justify-content-end sign-in-area align-items-center">
-                    <li>
-                        <a href="#server.catalogServerPath#/MyResearch/Home" class="btn btn-info">
-                            Log In
-                        </a>
-                    </li>
-                    <li>
-                        <a href="https://www.freelibrary.org/donate/" class="btn btn-danger">
-                            Donate <i class="margin-left-05 fa fa-heart" aria-hidden="true"></i>
-                        </a>
-                    </li>
-                    <li  class="get-library-card">
-                        <a href="#server.catalogServerPath#/register">
-                            Get a Library Card
-                        </a>
-                    </li>
-                </ul>
-            </div>
+          <!--- Donate, Library card and login button --->
+          <div class="d-none d-sm-block justify-content-between">
+              <ul class="list-inline d-flex gap-3 flex-wrap justify-content-end sign-in-area align-items-center">
+                  <li>
+                      <a href="#server.catalogServerPath#/MyResearch/Home" class="btn btn-info">
+                          Log In
+                      </a>
+                  </li>
+                  <li>
+                      <a href="https://www.freelibrary.org/donate/" class="btn btn-danger">
+                          Donate <i class="margin-left-05 fa fa-heart" aria-hidden="true"></i>
+                      </a>
+                  </li>
+                  <li  class="get-library-card">
+                      <a href="#server.catalogServerPath#/register">
+                          Get a Library Card
+                      </a>
+                  </li>
+              </ul>
+          </div>
 
-        </div>
+      </div>
     </div>
     <!--- Start First Nav Row --->
 
@@ -164,65 +162,9 @@
               <div class="d-flex container align-items-center justify-content-between google-translate-section">
 
                   <!--- Begin sub nav form --->
-                  <div class="col-md-9 findbox-d d-none d-sm-block hidden-sm margin-x-0 padding-x-0">
+                  <?php require(__DIR__ . '/../search/searchbox.phtml'); ?>
 
-                      <form id="QuickSearchMobile" name="QuickSearchMobile" class="d-flex margin-y-1 flex-wrap align-items-center" action="" method="post" onsubmit="return validateSearch('QuickSearchMobile');">
-                          <div class="segmented-control segmented-control--two margin-right-105">
-                              <fieldset class="" id="searchtype">
-                                  <legend class="visually-hidden">Search our catalog or our website.</legend>
-                                  <input type="radio" name="searchTech" id="searchme-catalog" value="catalog" checked>
-                                  <label for="searchme-catalog">Catalog</label>
-                                  <input type="radio" name="searchTech" id="searchme-website" value="website">
-                                  <label for="searchme-website">Website</label>
-                                  <span class="segment-indicator"></span>
-                              </fieldset>
-                          </div>
-                          <div class="form-group d-flex justify-content-between search-field findformfield">
-                              <div class="input-group">
-                                  <!--- Begin Search Input --->
-                                  <label for="searchForm_type" class="visually-hidden">Search Type</label>
-                                  <div class="searchTypeFilter margin-left-1" id="searchboxHandlers">
-                                      <select class="" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false" name="type" id="searchForm_type">
-                                      <option value="AllFields">All Fields</option>
-                                      <option value="Title">Title</option>
-                                      <option value="Author">Author</option>
-                                      <option value="Subject">Subject</option>
-                                      <option value="ISN">ISBN/ISSN</option>
-                                      <option value="CallNumber">Call Number</option>
-                                      <option value="tag">Tag</option>
-                                  </select>
-                                  <!--- Border between search type and search input field --->
-                                  <div class="vertical-border margin-x-05"></div>
-                                  </div><!-- /btn-group -->
-
-
-
-                                      <label for="keyword" class="visually-hidden">Keyword</label>
-                                      <input type="text" id="keyword" name="keyword" maxlength="255" class="" placeholder="search the catalog..." onFocus="doClear(this)">
-                                  <div class="pull-right">
-                                      <button type="submit" id="submitSearch" name="submit" class="search-btn" value="simple">
-                                          <span class="visually-hidden">Submit Search</span>
-                                          <span class="fa fa-search"></span>
-                                      </button>
-                                  </div>
-                              </div>
-                          </div>
-
-                          <input type="hidden" name="searchType" value="simple">
-                          <input type="hidden" name="site" value="default_collection">
-                          <input type="hidden" name="client" value="default_frontend">
-                          <input type="hidden" name="proxystylesheet" value="default_frontend">
-                          <input type="hidden" name="output" value="xml_no_dtd">
-
-                          <div id="advanced-search">
-                              <a class="text-info margin-x-1" href="Search/Advanced">Advanced Search</a>
-                          </div>
-
-                      </form>
-
-                  </div>
                   <!--- End subnav form --->
-
                   <!-- Begin Google Translate Section -->
                   <div class="">
                       <span class="language-selector text-info language-selection-row">
