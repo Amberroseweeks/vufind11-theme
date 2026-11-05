@@ -32,7 +32,7 @@
 
 	&-toggle {
 		color: $brand-dark;
-		background-color: $brand-light;
+		background-color: transparent;
 		border-color: $primary-gray-200;
 		border-radius: 3px;
 
@@ -172,6 +172,10 @@
 			@include view-all($brand-info);
 		}
 	}
+
+	&-info {
+		background-color: $primary;
+	}
 }
 
 //********************
@@ -273,6 +277,7 @@ a {
 		&-danger {
 			@include anchor-text-hover($brand-danger);
 		}
+		
 
 		&-gray {
 			@include anchor-text-hover($gray);
@@ -297,10 +302,12 @@ a {
   position: relative;
   display: inline-flex;
 //   gap: 3px;
-  border: 0;
+  outline: 6px solid $primary-gray-100;
+  border: 2px solid $primary-gray-100;
   border-radius: 20px;
   background: $primary-gray-100;
   height: 44px;
+
 
   input {
     position: absolute;
@@ -310,6 +317,7 @@ a {
     margin-left: 10px;
 
     &:checked + label {
+	background-color: #ffffff;
     color: $info-300;
     font-weight: 700;
 	width: fit-content;
@@ -341,7 +349,7 @@ a {
 	font-weight: 500;
     text-align: center;
     border-radius: 20px;
-		  	width: fit-content;
+	width: fit-content;
     cursor: pointer;
     color: $primary-gray-400;
     transition:
@@ -359,7 +367,7 @@ a {
     left: 3px;
     width: calc(50% - 5px);
     height: calc(100% - 5px);
-    background: #fff;
+    background-color: #fff;
     border-radius: 20px;
 	border: 1px solid $primary-gray-100;
     box-shadow: 0 5px 8px 2px rgba(0, 0, 0, 0.1);
