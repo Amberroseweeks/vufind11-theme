@@ -6,15 +6,17 @@
   @extend .clearfix;
 
   position: relative;
-  padding: 4rem 4rem;
+  padding: 10rem 2rem;
   color: #fff;
   background-color: $primary;
-  // background-image: url('#{$image-path}/yosemite.jpg');
+  background-image: url('#{$image-path}/leap-craft.jpg');
   background-position: center;
   background-repeat: no-repeat;
   background-size: cover;
 
-  a { color: #eef; }
+  // a { 
+  //   color: #ffffff;
+  // }
 
   .image-credit {
     position: absolute;

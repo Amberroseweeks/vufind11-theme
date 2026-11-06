@@ -9,6 +9,7 @@
   &:focus,
   &:hover {
     text-decoration: none;
+    color: $brand-danger;
   }
 
   &:focus {
@@ -17,11 +18,60 @@
   }
 }
 
+
+// Secondary navigation
+.secondary-nav {
+  .nav-link {
+    position: relative;
+
+    &::before {
+      content: "";
+      position: absolute;
+      top: -9px;
+      left: 50%;
+      transform: translateX(-50%);
+
+      width: 0;
+      height: 0;
+      border-left: 9px solid transparent;
+      border-right: 9px solid transparent;
+      border-bottom: 9px solid #fff;
+
+      opacity: 0;
+      transition: opacity 0.2s ease;
+    }
+
+    // Active page
+    &.active::before {
+      opacity: 1;
+    }
+
+    // Hover and keyboard focus
+    &:hover::before,
+    &:focus-visible::before {
+      opacity: 1;
+    }
+  }
+
+  // Hide the active triangle when another link is hovered or focused
+  &:has(.nav-link:hover) .nav-link.active::before,
+  &:has(.nav-link:focus-visible) .nav-link.active::before {
+    opacity: 0;
+  }
+}
+
+
+
 .navbar-toggle,
 a.navbar-toggle,
 a.navbar-toggle:hover {
   z-index: 1000;
   color: $brand-danger;
+}
+
+// main menu items
+.main-nav a {
+  color: $primary-gray-400 !important;
 }
 
 // Search area shown when user clicks on magnifying glass on mobile screens
@@ -75,6 +125,7 @@ a.navbar-toggle:hover {
     margin: 0px 20px;
     justify-content: space-between;
 
+
     &:focus-within {
       border: solid 1px $info-300;
       box-shadow: 0 0 0 .25rem rgba(14, 127, 167, .25);    }
@@ -97,7 +148,7 @@ a.navbar-toggle:hover {
       border-bottom: solid $primary-gray-100 2px;
       color: $info-300;
       padding: 10px;
-      width: 150px;
+      // width: 150px;
 
       &:active,
       &:focus,
@@ -131,7 +182,7 @@ a.navbar-toggle:hover {
     border-bottom: solid $primary-gray-100 2px;
     height: 64px !important;
     padding-left: 10px;
-    // border-radius: 0px;
+    border-radius: 0px;
     box-shadow: inset 0 0 0 1px rgba(255, 255, 255, 0), inset 0 0 0 100px rgba(255, 255, 255, 1);
 
     &:focus-visible {
@@ -188,7 +239,12 @@ a.navbar-toggle:hover {
     border-radius: 50px !important;
     padding: 10px 12px;
     border: none;
+
+    &:hover {
+    background-color: $info-400;
   }
+
+}
 
   .findformfield {
     border-radius: 20px;
@@ -245,6 +301,25 @@ a.navbar-toggle:hover {
     }
   }
 }
+
+.search-link {
+  border: none !important;
+}
+// secondary nav - testing an active class
+// .search-link.active::after {
+//   content: "";
+//   position: absolute;
+//   left: 14%;
+//   bottom: 0px;
+//   transform: translateX(-100%);
+
+//   width: 0;
+//   height: 0;
+
+//   border-left: 8px solid transparent;
+//   border-right: 8px solid transparent;
+//   border-bottom: 8px solid $brand-light;
+// }
 
 .section-title {
   background: $section $section-bg;
@@ -533,6 +608,17 @@ label:has([role="switch"]) {
 
 @media only screen and (min-width: 768px) {
 
+
+
+
+      select {
+
+      width: 150px;
+
+      }
+
+    }
+
   // Main Desktop Grey Navigation
   .nav-main-container {
     background: $brand-utility;
@@ -668,9 +754,21 @@ label:has([role="switch"]) {
     }
   }
 
-}
+
 
       @media only screen and (max-width: 768px) {
+
+
+    // main menu items
+.main-nav a {
+  padding: 10px;
+  border-top: 1px solid $primary-gray-100;
+  width: 100%;
+
+
+}
+
+
       .findbox-d .searchTypeFilter select {
       cursor: pointer;
       height: 64px;
@@ -716,9 +814,38 @@ label:has([role="switch"]) {
 
 
   }
+
+// for med screens
+      @media only screen and (max-width: 968px) {
+
+// main menu items
+.main-nav a {
+  padding: 10px;
+  border-top: 1px solid $primary-gray-100;
+  width: 100%;
+
+}
+
+
+      }
+
 // for small screens
       @media only screen and (max-width: 576px) {
   .findbox-d input {
     width: 210px;
   }
+
+// main menu items
+.main-nav a {
+  padding: 10px;
+}
+
+// select box
+
+    select {
+
+      width: 100%;
+
       }
+
+    }

@@ -10,7 +10,20 @@
   // &:hover {} 
 }
 
+// Account and login buttons
+
+#account-home-nav {
+
+}
 /* Google Translate */
+.skiptranslate iframe {
+    display: none !important;
+}
+
+.goog-te-gadget-icon {
+    display: none !important;
+}
+
 
 /* Hide the google logo */
 div#\:0\.targetLanguage,
@@ -33,8 +46,7 @@ a.VIpgJd-ZVi9od-l4eHX-hSRGPd {
 
 /* English and Spanish Buttons */
 .gt-button {
-  color: #0e7fa7;
-  background-color: #fefefe;
+  background-color: $primary;
 }
 
 .gt-button:hover {
@@ -82,7 +94,7 @@ select.goog-te-combo {
   appearance: none !important;
   -webkit-appearance: none;
   -moz-appearance: none;
-  background: url(#{$image-path}/translate-button.svg) no-repeat center;
+  background: url(#{$image-path}/translate-button-white.svg) no-repeat center;
   background-size: 100%;
   text-indent: -9999px;
   height: 55px;
@@ -100,7 +112,7 @@ select.goog-te-combo {
 }
 
 .nav-item {
-  padding: 0px 12px;
+  padding: 0px 8px;
   height: 100%;
   display: inline-flex;
   flex-wrap: nowrap;
@@ -109,10 +121,30 @@ select.goog-te-combo {
   font-weight: 500;
 }
 
+.nav-item:not(:last-child)::after {
+  content: "|";
+  margin-left: 1rem;
+  color: $primary-gray-100;
+}
+
+.login-nav-item {
+  height: 100%;
+  display: inline-flex;
+  flex-wrap: nowrap;
+  flex-direction: row;
+  font-family: "Figtree", sans-serif !important;
+  font-weight: 500;
+      text-decoration: none;
+    height: 44px;
+    align-content: center;
+}
+
 
 
 .get-library-card {
   font-weight: 600;
+  color: $brand-danger !important;
+  text-decoration: none !important;
 }
 
 .nav-item {
@@ -126,7 +158,6 @@ select.goog-te-combo {
   a {
     text-decoration: none;
     position: relative;
-    color: $primary-gray-400;
   }
 
   a::after {
@@ -315,15 +346,13 @@ select.goog-te-combo {
     appearance: none !important;
     -webkit-appearance: none;
     -moz-appearance: none;
-    background: url(#{$image-path}/translate-button.svg) no-repeat center;
-    background-color: #eeeeee;
+    background: url(#{$image-path}/translate-button-white.svg) no-repeat center;
     background-size: 100%;
     /* text-indent: -9999px; */
     height: 35px;
     font-size: 14px;
     border: none;
     border-radius: 5px;
-    background-color: #fefefe;
     margin: 0px !important;
   }
 

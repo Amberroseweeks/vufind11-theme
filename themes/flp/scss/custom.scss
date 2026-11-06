@@ -54,7 +54,20 @@ a.title.getFull {
 
 
 
+/* Remove the top offset Google adds to the page */
+body {
+    top: 0 !important;
+}
 
+/* Sometimes Google applies the offset to html as well */
+html {
+    top: 0 !important;
+}
+
+// Remove the google trasnlate loading spinner
+.VIpgJd-ZVi9od-aZ2wEe-wOHMyf {
+  display: none !important;
+}
 /* Change specific styles below */
 html {
   font-size: 1rem;
@@ -96,18 +109,17 @@ body {
   font-family: $font-family-sans-serif;
 }
 header {
+  a.main-nav {
   font-size: 1rem;
-  color: $primary;
+  color: $primary-gray-300 !important;
+  }
+
 
   .banner {
     padding: 0;
   }
 }
-#content {
-  padding-block: 1px; /* fix margin gap */
 
-
-}
 
 .container {
   border-radius: 0;

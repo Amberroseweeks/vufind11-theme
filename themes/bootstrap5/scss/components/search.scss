@@ -854,6 +854,7 @@ header .container.navbar {
 
 .reset-filters-btn {
   @extend .toolbar-btn;
+  color: $primary;
   gap: 0.25rem;
   margin-bottom: 4px;
   margin-top: 4px;
